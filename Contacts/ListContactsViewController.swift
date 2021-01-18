@@ -11,7 +11,9 @@ import CoreData
 
 class ListContactsViewController: UIViewController {
     var coreDataStack: CoreDataStack!
-     var contacts :[Contact] = []
+    @IBOutlet weak var tableview: UITableView!
+    var contacts :[Contact] = []
+    var contact: Contact!
     override func viewDidLoad() {
         super.viewDidLoad()
       setup()
@@ -32,6 +34,15 @@ class ListContactsViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+       
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        self.getAllContacts()
+        self.tableview.reloadData()
+    }
 }
     
     extension ListContactsViewController: UITableViewDataSource, UITableViewDelegate {
@@ -42,7 +53,7 @@ class ListContactsViewController: UIViewController {
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "myCell") as! TableViewCell
             cell.cell(contact: contacts[indexPath.row])
-            cell.selectionStyle = .none
+       
             return cell
         }
         
@@ -50,6 +61,21 @@ class ListContactsViewController: UIViewController {
             return 150.0
         }
         
+        
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            contact = contacts[indexPath.row]
+            performSegue(withIdentifier: "EditViewController", sender: self)
+        }
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+               if let editView = segue.destination as? EditContactViewController {
+                editView.contact = contact
+                editView.editMode = true
+                editView.title = "Edit Contact"
+               }
+           }
+    
     }
 
 

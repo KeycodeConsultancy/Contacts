@@ -2,7 +2,7 @@
 //  Contact+CoreDataProperties.swift
 //  Contacts
 //
-//  Created by Kevin Reid on 17/01/2019.
+//  Created by Kevin Reid on 18/01/2021.
 //
 //
 
@@ -16,9 +16,10 @@ extension Contact {
         return NSFetchRequest<Contact>(entityName: "Contact")
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var email: String?
+    @NSManaged public var name: String?
     @NSManaged public var telephone: String?
+    @NSManaged public var id: UUID?
 
 }
 

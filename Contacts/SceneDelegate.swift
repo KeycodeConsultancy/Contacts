@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var coreDataStack = CoreDataStack(modelName: "Contact")
+    //var coreDataStack = CoreDataStack(modelName: "Contact")
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -48,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the applicatiot _ = (scene as? UIWindowScene) else { return }n's managed object context when the application transitions to the background.
         
-        coreDataStack.saveContext()
+        //coreDataStack.saveContext()
      
     }
 

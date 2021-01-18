@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+class MainMenuViewController: UIViewController {
     
     
     override func viewDidLoad() {
