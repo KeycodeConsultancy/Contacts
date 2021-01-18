@@ -50,7 +50,8 @@ public class CoreDataStack {
         let entity =  NSEntityDescription.entity(forEntityName: "Contact", in: managedContext)!
         let updateRequest = NSBatchUpdateRequest(entity: entity)
         
-        updateRequest.predicate = NSPredicate(format: "email == %@", contact.email!)
+        updateRequest.predicate = NSPredicate(format: "id == %@", contact.id!)
+        
         updateRequest.propertiesToUpdate = ["name" : contact.name!, "telephone" : contact.telephone!]
         updateRequest.resultType = .updatedObjectsCountResultType
 
@@ -82,7 +83,7 @@ public class CoreDataStack {
     
     func delete(contact: Contact) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Contact")
-        fetchRequest.predicate = NSPredicate(format: "email == %@", contact.email!)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", contact.id!)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
         do {

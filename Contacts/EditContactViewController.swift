@@ -39,9 +39,12 @@ class EditContactViewController: UIViewController {
     
     
     func showButtons() {
-        deleteButton.isHidden = !editMode
-        updateButton.isHidden = !editMode
-        
+        for case let button as UIButton in self.view.subviews {
+            button.layer.cornerRadius = 5
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.black.cgColor
+            button.isHidden = !editMode
+        }
     }
     
     @IBAction func deleteContact(_ sender: Any) {
@@ -70,6 +73,8 @@ class EditContactViewController: UIViewController {
     
     func addContact() {
         let contact = Contact(context:self.coreDataStack.managedContext)
+        let uuid = UUID().uuidString
+        contact.id = uuid
         contact.name = nameTextField.text
         contact.email = emailAddressTextField.text
         contact.telephone = telephoneNumberTextField.text

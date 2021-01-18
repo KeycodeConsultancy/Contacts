@@ -26,7 +26,7 @@ class ListContactsViewController: UIViewController {
 
     func getAllContacts() {
         let fetchContacts: NSFetchRequest<Contact> = Contact.fetchRequest()
-        
+            
         do {
             contacts = try coreDataStack.managedContext.fetch(fetchContacts)
         } catch {
